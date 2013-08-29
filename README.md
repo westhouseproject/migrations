@@ -14,3 +14,6 @@ The `users` table needs a `gender` column? Create a new migration using `db-migr
 
 You find the `first_name` and `last_name` columns redundant, and you would like to merge them into a `full_name` column? Same deal; `db-migrate create users` and you get yourself a new migration file.
 
+## Warning
+
+**This project is not for versioning data.** It's only for **creating/updating schemas, and having them versioned for easy downgrades**.
