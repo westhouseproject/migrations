@@ -10,9 +10,9 @@ But, lurk deeper, and you will realize that this does more than just create data
 
 Yes, you can version the changes to your database.
 
-The `users` table needs a `gender` column? Create a new migration using `db-migrate create users` and specify it in the generated `.js` file.
+The `users` table needs a `gender` column? Create a new migration using `migrate create users` and specify it in the generated `.js` file.
 
-You find the `first_name` and `last_name` columns redundant, and you would like to merge them into a `full_name` column? Same deal; `db-migrate create users` and you get yourself a new migration file.
+You find the `first_name` and `last_name` columns redundant, and you would like to merge them into a `full_name` column? Same deal; `migrate create users` and you get yourself a new migration file.
 
 ## Warning
 
