@@ -37,7 +37,7 @@ exports.up = function(next) {
   var hourlyTotalsQuery =
   'CREATE TABLE IF NOT EXISTS `hourly_totals` ( \
     `id` int(11) unsigned NOT NULL AUTO_INCREMENT, \
-    `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, \
+    `time` datetime NOT NULL, \
     `start_kwh` float NOT NULL, \
     `hour_kwh` float NOT NULL, \
     `device_id` int(11) unsigned NOT NULL, \
@@ -48,7 +48,7 @@ exports.up = function(next) {
   var perMinuteTotalsQuery =
   'CREATE TABLE IF NOT EXISTS `per_minute_totals` ( \
     `id` int(11) unsigned NOT NULL AUTO_INCREMENT, \
-    `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP, \
+    `time` timestamp NOT NULL, \
     `start_kwh` float NOT NULL, \
     `hour_kwh` float NOT NULL, \
     `device_id` int(11) unsigned NOT NULL, \
