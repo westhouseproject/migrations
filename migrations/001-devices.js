@@ -38,8 +38,8 @@ exports.up = function(next) {
   'CREATE TABLE IF NOT EXISTS `hourly_totals` ( \
     `id` int(11) unsigned NOT NULL AUTO_INCREMENT, \
     `time` datetime NOT NULL, \
-    `start_kwh` float NOT NULL, \
-    `hour_kwh` float NOT NULL, \
+    `start_kwh` double NOT NULL, \
+    `hour_kwh` double NOT NULL, \
     `device_id` int(11) unsigned NOT NULL, \
     PRIMARY KEY (`id`), \
     KEY `device_id` (`device_id`) \
