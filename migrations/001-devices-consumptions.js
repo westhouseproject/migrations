@@ -40,6 +40,8 @@ exports.up = function(next) {
     `time` datetime NOT NULL, \
     `start_kwh` double NOT NULL, \
     `hour_kwh` double NOT NULL, \
+    `min` double NOT NULL DEFAULT -1, \
+    `max` double NOT NULL DEFAULT -1, \
     `device_id` int(11) unsigned NOT NULL, \
     PRIMARY KEY (`id`), \
     KEY `device_id` (`device_id`) \
