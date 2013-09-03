@@ -43,6 +43,46 @@ exports.down = function(next){
 
 You can read more about the `migrate` at the project's [README file](https://github.com/visionmedia/node-migrate/blob/master/Readme.md).
 
+## Libraries
+
+Commonly used functions can be found in lib/utils.js.
+
+### database.query(sql, callback)
+
+Runs the query in `sql`, and calls `callback` once done.
+
+`callback` will be exposed to an error object, when an error occurs trying to execute the query.
+
+**But remember** to close the connection once you are done with all your queries! Please see `database.end`.
+
+#### Usage
+
+```javascript
+var utils = require('../lib/utils');
+
+var query = 'SELECT 1 + 1 AS solution';
+
+utils.database.query(query, function (err) {
+  if (err) throw err;
+
+  // Additional code goes here.
+});
+```
+
+### database.end()
+
+Closes the MySQL connection.
+
+#### Usage
+
+```javascript
+var utils = require('../lib/utils');
+
+// Run some queries if you like.
+
+utils.database.end()
+```
+
 ## Warning
 
 **This project is not for versioning data.** It's only for **creating/updating schemas, and having them versioned for easy downgrades**.
