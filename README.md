@@ -2,7 +2,7 @@
 
 Create the database tables, make changes to their schemas, and have them versioned for easy fallback.
 
-## Just Got Started
+## Quick Start
 
 Be sure to have Node.js.
 
@@ -19,58 +19,29 @@ $ ./node_modules/migrate/bin/migrate
 
 After running the above set of commands, you should see a new set tables created in the datababse.
 
-## Description
+## Creating new Migrations
 
-On the surface, the code herein is nothing secial. **It just creates the necessary tables onto the database**. It's perfect if you are running the West House Project on your machine for the first time.
+This project use's @visionmedia's [node-migrate](https://github.com/visionmedia/node-migrate).
 
-But, lurk deeper, and you will realize that this does more than just create database tables. Take a look at the `migrations` folder, and you'll see a bunch of `.js` files. And if you've written code long enough, you'll notice that the gibberish prepending each `.js` files actually represent something significant: revisions.
+So to create a new migration you could run
 
-Yes, you can version the changes to your database.
+```shell
+$ ./node_migrate/migrate/bin/migrate create my-new-migrate
+```
 
-The `users` table needs a `gender` column? Create a new migration using `migrate create users` and specify it in the generated `.js` file.
-
-You find the `first_name` and `last_name` columns redundant, and you would like to merge them into a `full_name` column? Same deal; `migrate create users` and you get yourself a new migration file.
-
-## When to Create new Migrations?
-
-Whenever there are changes to the schema. So, for instance, you have a first name and a list name field in a `persons` database table. However, you find those fields redundant, and want to merge them.
-
-To satisfy your need of having only one field per user's name, you can write a migration to easily delete the two other columns, and create a new one.
-
-your migration code would then look like:
+And a new file in the `migrations` folder will be created, with only two exports:
 
 ```javascript
-// This demonstrates the user of migrations to easily update databases.
-module.exports.up = function (next) {
-  // We want to ensure that we don't loose either of the fist name or the last
-  // name. In this case, we go through each record, update their names, so that
-  // the first name field has both the first name and last name.
-  var users = db.select('first_name, last_name').from('users')
-  // Note: the above db object is just for the sake of demonstration.
+exports.up = function(next){
+  next();
+};
 
-  users.forEach(function (user) {
-    user.first_name += ' ' + user.last_name;
-  });
-
-  users.save();
-
-  // So each user's first_name has both the first and last name.
-  //
-  // Now, time to delete the column, and add a new one.
-  db.from('users').deleteColumn('last_name');
-  db.from('users').editColumn('first_name').to('full_name');
-  
+exports.down = function(next){
   next();
 };
 ```
 
-## Creating your first migration
-
-```shell
-$ ./node_modules/migrate/bin/migrate create change-name-field
-```
-
-You should then see a `001-change-name-field.js`. And from there, you should be able to write your own migrations. If you're stuck, read the sample code above.
+You can read more about the `migrate` at the project's [README file](https://github.com/visionmedia/node-migrate/blob/master/Readme.md).
 
 ## Warning
 
