@@ -2,6 +2,8 @@
 
 Create the database tables, make changes to their schemas, and have them versioned for easy fallback.
 
+This project uses @visionmedia's [node-migrate](https://github.com/visionmedia/node-migrate). You can learn more about it from its [README](https://github.com/visionmedia/node-migrate/blob/0.1.3/Readme.md) file.
+
 ## Quick Start
 
 Be sure to have Node.js.
@@ -21,12 +23,10 @@ After running the above set of commands, you should see a new set tables created
 
 ## Creating new Migrations
 
-This project use's @visionmedia's [node-migrate](https://github.com/visionmedia/node-migrate).
-
-So to create a new migration you could run
+Since this project uses @visionmedia's [node-migrate](https://github.com/visionmedia/node-migrate), you can create a new migration by running:
 
 ```shell
-$ ./node_migrate/migrate/bin/migrate create my-new-migrate
+$ ./node_modules/migrate/bin/migrate create my-new-migrate
 ```
 
 And a new file in the `migrations` folder will be created, with only two exports:
