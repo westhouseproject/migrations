@@ -24,12 +24,12 @@ exports.up = function (next) {
   var queries = new Array();
   queries.push('DROP TABLE IF EXISTS "per_minute_totals";');
   queries.push('ALTER TABLE `devices` ADD `name` varchar(64);');
-  queries.push('CREATE TABLE consumption(polltime datetime, \
+  queries.push('CREATE TABLE IF NOT EXISTS consumption(polltime datetime, \
   ind int,units varchar(4),poll float,frequency float);');
-  queries.push('CREATE TABLE con_minutes(polltime datetime, \
+  queries.push('CREATE TABLE IF NOT EXISTS con_minutes(polltime datetime, \
   ind int,units varchar(4),poll float,frequency float); \
   alter table con_minutes add unique index(polltime, ind, units);');
-  queries.push('CREATE TABLE con_hours(polltime datetime,ind int, \
+  queries.push('CREATE TABLE IF NOT EXISTS con_hours(polltime datetime,ind int, \
   units varchar(4),poll float,frequency float);alter table con_hours \
   add unique index(polltime, ind, units);';)
   
