@@ -29,6 +29,9 @@ exports.up = function (next) {
   queries.push('CREATE TABLE IF NOT EXISTS con_minutes(polltime datetime, \
   ind int,units varchar(4),poll float,frequency float); \
   alter table con_minutes add unique index(polltime, ind, units);');
+  queries.push('CREATE TABLE IF NOT EXISTS con_fivemin(polltime datetime, \
+  ind int,units varchar(4),poll float,frequency float); \
+  alter table con_fivemin add unique index(polltime, ind, units);');
   queries.push('CREATE TABLE IF NOT EXISTS con_hours(polltime datetime,ind int, \
   units varchar(4),poll float,frequency float);alter table con_hours \
   add unique index(polltime, ind, units);';)
@@ -66,7 +69,8 @@ exports.down = function(next){
 	 
 	queries.push("ALTER 'devices' DROP COLUMN 'name';");
 	queries.push("DROP TABLE IF EXISTS consumption;");
-	queries.push("DROP TABLE IF EXISTS con_min;");
+	queries.push("DROP TABLE IF EXISTS con_minutes;");
+	queries.push("DROP TABLE IF EXISTS con_fivemin;");
 	queries.push("DROP TABLE IF EXISTS con_hours;");
 	queries.push("INSERT IGNORE INTO bcpm(timestamp) \
 	SELECT polltime FROM consumption WHERE ind = 1 AND units = 'kw';");
