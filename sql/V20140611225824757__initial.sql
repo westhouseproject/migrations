@@ -1,3 +1,11 @@
+CREATE TABLE `devices` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `real_device_id` varchar(256) NOT NULL DEFAULT '',
+  `name` varchar(256) DEFAULT NULL,
+  `type` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
+
 CREATE TABLE `data_points` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `device_id` int(11) unsigned NOT NULL,
@@ -91,12 +99,4 @@ CREATE TABLE `data_points_1y` (
   PRIMARY KEY (`id`),
   KEY `device_id` (`device_id`),
   CONSTRAINT `data_points_1y_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
-
-CREATE TABLE `devices` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `real_device_id` varchar(256) NOT NULL DEFAULT '',
-  `name` varchar(256) DEFAULT NULL,
-  `type` varchar(255) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
