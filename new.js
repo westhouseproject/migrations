@@ -18,14 +18,20 @@ if (!migrationName) {
 
 const current = new Date();
 
+function pad(num, size) {
+  var s = num + '';
+  while (s.length < size) s = '0' + s;
+  return s;
+}
+
 const datestring = [
   current.getUTCFullYear(),
-  current.getUTCMonth() + 1, // JavaScript returns 0 to 11.
-  current.getUTCDate(),
-  current.getUTCHours(), // JavaScript returns 0 to 23.
-  current.getUTCMinutes(), // JavaScript returns 0 to 59.
-  current.getUTCSeconds(),
-  current.getUTCMilliseconds()
+  pad(current.getUTCMonth() + 1, 2), // JavaScript returns 0 to 11.
+  pad(current.getUTCDate(), 2),
+  pad(current.getUTCHours(), 2),
+  pad(current.getUTCMinutes(), 2),
+  pad(current.getUTCSeconds(), 2),
+  pad(current.getUTCMilliseconds(), 3)
 ].join('');
 
 const filename = util.format('%s__%s.sql', datestring, migrationName);
