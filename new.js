@@ -34,7 +34,7 @@ const datestring = [
   pad(current.getUTCMilliseconds(), 3)
 ].join('');
 
-const filename = util.format('%s__%s.sql', datestring, migrationName);
+const filename = util.format('V%s__%s.sql', datestring, migrationName);
 const destpath = path.join(__dirname, 'sql', filename);
 
 if (fs.existsSync(destpath)) {
