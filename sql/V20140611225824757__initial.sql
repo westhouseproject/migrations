@@ -1,6 +1,8 @@
 CREATE TABLE `time_series` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `label` varchar(256) NOT NULL DEFAULT '',
+  `time_created` datetime NOT NULL,
+  `time_modified` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
@@ -9,6 +11,8 @@ CREATE TABLE `devices` (
   `real_device_id` varchar(256) NOT NULL DEFAULT '',
   `name` varchar(256) DEFAULT NULL,
   `series_id` int(11) unsigned NOT NULL,
+  `time_created` datetime NOT NULL,
+  `time_modified` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `series_id` (`series_id`),
   CONSTRAINT `devices_ibfk_1` FOREIGN KEY (`series_id`) REFERENCES `devices` (`id`)
