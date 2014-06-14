@@ -15,7 +15,7 @@ CREATE TABLE `devices` (
   `time_modified` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `series_id` (`series_id`),
-  CONSTRAINT `devices_ibfk_1` FOREIGN KEY (`series_id`) REFERENCES `devices` (`id`)
+  CONSTRAINT `devices_ibfk_1` FOREIGN KEY (`series_id`) REFERENCES `time_series` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `data_points` (
