@@ -1,9 +1,17 @@
+CREATE TABLE `time_series` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `label` varchar(256) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
 CREATE TABLE `devices` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `real_device_id` varchar(256) NOT NULL DEFAULT '',
   `name` varchar(256) DEFAULT NULL,
-  `type` varchar(255) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`)
+  `series_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `series_id` (`series_id`),
+  CONSTRAINT `devices_ibfk_1` FOREIGN KEY (`series_id`) REFERENCES `devices` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `data_points` (
