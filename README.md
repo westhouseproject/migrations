@@ -11,10 +11,10 @@ node new.js $MIGRATION_NAME
 Or, at least, the migration name should be prefixed by a timestamp. It should be in the form:
 
 ```
-<YYYY><MM><DD><HH><MM><SS><mmm>__<migration name>.sql
+V<YYYY><MM><DD><HH><MM><SS><mmm>__<migration name>.sql
 ```
 
-e.g. `20140611225803774__add_tables.sql`.
+e.g. `V20140611225803774__add_tables.sql`.
 
 The above date must be in UTC.
 
