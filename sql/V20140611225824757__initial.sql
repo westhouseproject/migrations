@@ -112,3 +112,12 @@ CREATE TABLE `data_points_1y` (
   KEY `device_id` (`device_id`),
   CONSTRAINT `data_points_1y_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `running_total_cache` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `device_id` int(11) unsigned NOT NULL,
+  `running_total` float NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `device_id` (`device_id`),
+  CONSTRAINT `running_total_cache_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
