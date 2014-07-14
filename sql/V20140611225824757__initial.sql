@@ -3,7 +3,8 @@ CREATE TABLE `time_series` (
   `label` varchar(256) NOT NULL DEFAULT '',
   `time_created` datetime NOT NULL,
   `time_modified` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `label` (`label`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `devices` (
@@ -26,6 +27,7 @@ CREATE TABLE `data_points` (
   `time` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `device_id` (`device_id`),
+  KEY `time` (`time`),
   CONSTRAINT `data_points_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=74341 DEFAULT CHARSET=latin1;
 
@@ -40,6 +42,7 @@ CREATE TABLE `data_points_1d` (
   `max` float NOT NULL,
   PRIMARY KEY (`id`),
   KEY `device_id` (`device_id`),
+  KEY `time` (`time`),
   CONSTRAINT `data_points_1d_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
 
@@ -54,6 +57,7 @@ CREATE TABLE `data_points_1h` (
   `max` float NOT NULL,
   PRIMARY KEY (`id`),
   KEY `device_id` (`device_id`),
+  KEY `time` (`time`),
   CONSTRAINT `data_points_1h_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=169 DEFAULT CHARSET=latin1;
 
@@ -68,6 +72,7 @@ CREATE TABLE `data_points_1m` (
   `max` float NOT NULL,
   PRIMARY KEY (`id`),
   KEY `device_id` (`device_id`),
+  KEY `time` (`time`),
   CONSTRAINT `data_points_1m_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3109 DEFAULT CHARSET=latin1;
 
@@ -82,6 +87,7 @@ CREATE TABLE `data_points_1mo` (
   `max` float NOT NULL,
   PRIMARY KEY (`id`),
   KEY `device_id` (`device_id`),
+  KEY `time` (`time`),
   CONSTRAINT `data_points_1mo_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
 
@@ -96,6 +102,7 @@ CREATE TABLE `data_points_1w` (
   `max` float NOT NULL,
   PRIMARY KEY (`id`),
   KEY `device_id` (`device_id`),
+  KEY `time` (`time`),
   CONSTRAINT `data_points_1w_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
 
@@ -110,6 +117,7 @@ CREATE TABLE `data_points_1y` (
   `max` float NOT NULL,
   PRIMARY KEY (`id`),
   KEY `device_id` (`device_id`),
+  KEY `time` (`time`),
   CONSTRAINT `data_points_1y_ibfk_1` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
 
