@@ -20,7 +20,7 @@ CREATE TABLE `devices` (
 ) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `data_points` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(11) unsigned NOT NULL AUTO_INCREMENT,
   `device_id` int(11) unsigned NOT NULL,
   `value` float NOT NULL,
   `running_total` float NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE `data_points_1h` (
 ) ENGINE=InnoDB AUTO_INCREMENT=169 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `data_points_1m` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` bigint(11) unsigned NOT NULL AUTO_INCREMENT,
   `device_id` int(11) unsigned NOT NULL,
   `mean` float NOT NULL,
   `running_total` float NOT NULL,
