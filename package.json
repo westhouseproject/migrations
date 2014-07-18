@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "db-migrate": "^0.6.4",
+    "mysql": "^2.4.1"
+  }
+}
